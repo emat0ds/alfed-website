@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFED - Il gestionale per chi vende online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: #FFFFFF;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1E40AF;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1F2937;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1E40AF;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #F97316;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #EA580C;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #1E40AF;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #1E3A8A;
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .payoff {
+            font-size: 1.5rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* PROBLEMA */
+        .problema {
+            padding: 5rem 2rem;
+            background: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .problema h2 {
+            font-size: 2.2rem;
+            color: #1E40AF;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .problema-text {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #4B5563;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .soluzione {
+            background: #EFF6FF;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #F97316;
+        }
+
+        .soluzione p {
+            font-size: 1.15rem;
+            color: #1F2937;
+        }
+
+        /* BENEFICI */
+        .benefici {
+            padding: 5rem 2rem;
+            background: #F8FAFC;
+        }
+
+        .benefici h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #1E40AF;
+            margin-bottom: 3rem;
+        }
+
+        .benefici-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .beneficio-card {
+            background: #FFFFFF;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .beneficio-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .beneficio-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .beneficio-card h3 {
+            font-size: 1.2rem;
+            color: #1E40AF;
+            margin-bottom: 0.5rem;
+        }
+
+        .beneficio-card p {
+            color: #6B7280;
+            font-size: 0.95rem;
+        }
+
+        /* SETTORI */
+        .settori {
+            padding: 5rem 2rem;
+            background: #FFFFFF;
+        }
+
+        .settori h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1E40AF;
+            margin-bottom: 3rem;
+        }
+
+        .settori-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .settore-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: #F8FAFC;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .settore-item:hover {
+            background: #EFF6FF;
+            transform: scale(1.05);
+        }
+
+        .settore-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .settore-item span {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        /* PREZZO */
+        .prezzo {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .prezzo h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .prezzo-box {
+            background: white;
+            color: #1F2937;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .prezzo-valore {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #1E40AF;
+        }
+
+        .prezzo-valore span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #6B7280;
+        }
+
+        .prezzo-box p {
+            margin: 1rem 0;
+            color: #6B7280;
+        }
+
+        .prezzo-box .highlight {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* CTA FINALE */
+        .cta-finale {
+            padding: 5rem 2rem;
+            background: #F8FAFC;
+            text-align: center;
+        }
+
+        .cta-finale h2 {
+            font-size: 2rem;
+            color: #1F2937;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1F2937;
+            color: #9CA3AF;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #F97316;
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .payoff {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .benefici-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .settori-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .prezzo-valore {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">ALFED</div>
+            <div class="nav-links">
+                <a href="#benefici">Funzionalità</a>
+                <a href="#settori">Settori</a>
+                <a href="#prezzo">Prezzi</a>
+                <a href="https://app.alfedcrm.it/login" class="btn btn-primary">Accedi</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>ALFED</h1>
+        <p class="payoff">Il gestionale per chi vende online</p>
+        <p class="subtitle">Gestisci lead e venditori da un'unica dashboard.</p>
+        <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova gratis 14 giorni</a>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="problema">
+        <div class="container">
+            <h2>Sai davvero quanto rendono le tue lead?</h2>
+            <p class="problema-text">
+                Come performano i soldi che investi? La tua squadra fa rendere al massimo i soldi investiti? Hai il controllo di quello che succede nel flusso di vendita?
+            </p>
+            <div class="soluzione">
+                <p><strong>Con ALFED vedi tutto in tempo reale:</strong> quante lead arrivano, chi le lavora, quante si chiudono. Finalmente sai dove vanno i tuoi soldi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICI -->
+    <section class="benefici" id="benefici">
+        <h2>Perché scegliere ALFED</h2>
+        <div class="benefici-grid">
+            <div class="beneficio-card">
+                <div class="icon">📊</div>
+                <h3>Dashboard in tempo reale</h3>
+                <p>Vedi subito lead, venditori, risultati</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">👥</div>
+                <h3>Supporta il tuo team</h3>
+                <p>Con un colpo d'occhio sai chi ha bisogno di aiuto e chi no</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">📈</div>
+                <h3>Misura il ROI</h3>
+                <p>Capisci se la pubblicità rende</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">⚡</div>
+                <h3>Semplice da usare</h3>
+                <p>Niente formazione, parti subito</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SETTORI -->
+    <section class="settori" id="settori">
+        <h2>Perfetto per chi usa lead online per vendere</h2>
+        <div class="settori-grid">
+            <div class="settore-item">
+                <div class="icon">🚗</div>
+                <span>Auto e noleggio</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">☀️</div>
+                <span>Fotovoltaico</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">✈️</div>
+                <span>Viaggi e vacanze</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">💰</div>
+                <span>Finanziamenti</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">🪟</div>
+                <span>Infissi</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">🛡️</div>
+                <span>Assicurazioni</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">🎓</div>
+                <span>Corsi di formazione</span>
+            </div>
+            <div class="settore-item">
+                <div class="icon">🏠</div>
+                <span>Immobiliare</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREZZO -->
+    <section class="prezzo" id="prezzo">
+        <h2>Un prezzo semplice</h2>
+        <div class="prezzo-box">
+            <div class="prezzo-valore">€7 <span>/ mese per utente</span></div>
+            <p>Tutto incluso. Nessun costo nascosto.</p>
+            <p class="highlight">Prova gratis 14 giorni, senza carta di credito.</p>
+            <a href="https://app.alfedcrm.it/register" class="btn btn-secondary">Inizia gratis</a>
+        </div>
+    </section>
+
+    <!-- CTA FINALE -->
+    <section class="cta-finale">
+        <h2>Pronto a massimizzare il tuo investimento in lead e a supportare il tuo team di vendita?</h2>
+        <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova ALFED gratis per 14 giorni</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="logo">ALFED</div>
+        <p>Il gestionale per chi vende online</p>
+        <p style="margin-top: 1rem;">© 2025 ALFED. Tutti i diritti riservati. | <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a></p>
+    </footer>
+
+</body>
+</html>
