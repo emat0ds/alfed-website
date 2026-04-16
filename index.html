@@ -6,7 +6,7 @@
     <title>ALFED - Il gestionale per chi vende online</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,21 +15,22 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F8FAFC;
-            color: #1F2937;
-            line-height: 1.6;
+            font-family: 'Nunito', sans-serif;
+            background-color: #FAFBFC;
+            color: #2D3748;
+            line-height: 1.7;
         }
 
         /* HEADER */
         header {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         nav {
@@ -54,7 +55,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #1F2937;
+            color: #4A5568;
             font-weight: 600;
             transition: color 0.3s;
         }
@@ -65,69 +66,132 @@
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 8px;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             cursor: pointer;
             border: none;
         }
 
         .btn-primary {
-            background: #F97316;
+            background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
         }
 
         .btn-primary:hover {
-            background: #EA580C;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
         }
 
         .btn-secondary {
-            background: #1E40AF;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
         }
 
         .btn-secondary:hover {
-            background: #1E3A8A;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1E40AF;
+            border: 2px solid #1E40AF;
+        }
+
+        .btn-outline:hover {
+            background: #1E40AF;
+            color: white;
         }
 
         /* HERO */
         .hero {
             padding: 10rem 2rem 6rem;
-            text-align: center;
-            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
-            color: white;
+            background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 50%, #C7D2FE 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23FAFBFC' d='M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
             font-weight: 800;
+            color: #1E40AF;
             margin-bottom: 0.5rem;
+            line-height: 1.1;
         }
 
-        .hero .payoff {
-            font-size: 1.5rem;
+        .hero-text .payoff {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #F97316;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: #4A5568;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Placeholder per immagini */
+        .img-placeholder {
+            background: linear-gradient(135deg, #CBD5E1 0%, #94A3B8 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-weight: 600;
-            opacity: 0.9;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
         }
 
-        .hero .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.85;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-image .img-placeholder {
+            width: 100%;
+            height: 350px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         /* PROBLEMA */
         .problema {
-            padding: 5rem 2rem;
-            background: #FFFFFF;
+            padding: 6rem 2rem;
+            background: #FAFBFC;
         }
 
         .container {
@@ -135,71 +199,105 @@
             margin: 0 auto;
         }
 
-        .problema h2 {
-            font-size: 2.2rem;
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
             color: #1E40AF;
             text-align: center;
             margin-bottom: 1.5rem;
         }
 
-        .problema-text {
-            font-size: 1.2rem;
-            text-align: center;
-            color: #4B5563;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .soluzione {
-            background: #EFF6FF;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border-left: 4px solid #F97316;
-        }
-
-        .soluzione p {
+        .section-subtitle {
             font-size: 1.15rem;
-            color: #1F2937;
+            text-align: center;
+            color: #64748B;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .problema-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .problema-image .img-placeholder {
+            width: 100%;
+            height: 300px;
+        }
+
+        .problema-text {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border-left: 5px solid #F97316;
+        }
+
+        .problema-text h3 {
+            font-size: 1.5rem;
+            color: #1E40AF;
+            margin-bottom: 1rem;
+        }
+
+        .problema-text p {
+            color: #64748B;
+            margin-bottom: 1rem;
+        }
+
+        .problema-text .highlight {
+            color: #1E40AF;
+            font-weight: 700;
         }
 
         /* BENEFICI */
         .benefici {
-            padding: 5rem 2rem;
-            background: #F8FAFC;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #FAFBFC 0%, #EEF2FF 100%);
+            position: relative;
         }
 
-        .benefici h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #1E40AF;
-            margin-bottom: 3rem;
+        .benefici::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23FAFBFC' d='M0,40 C480,0 960,80 1440,40 L1440,0 L0,0 Z'/%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
         }
 
         .benefici-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .beneficio-card {
-            background: #FFFFFF;
+            background: white;
             padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.3s;
         }
 
         .beneficio-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
-        .beneficio-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .beneficio-card .img-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 16px;
         }
 
         .beneficio-card h3 {
@@ -209,162 +307,266 @@
         }
 
         .beneficio-card p {
-            color: #6B7280;
+            color: #64748B;
             font-size: 0.95rem;
         }
 
         /* SETTORI */
         .settori {
-            padding: 5rem 2rem;
-            background: #FFFFFF;
-        }
-
-        .settori h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: #1E40AF;
-            margin-bottom: 3rem;
+            padding: 6rem 2rem;
+            background: white;
         }
 
         .settori-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .settore-item {
             text-align: center;
-            padding: 1.5rem 1rem;
+            padding: 1.5rem;
             background: #F8FAFC;
-            border-radius: 10px;
+            border-radius: 20px;
             transition: all 0.3s;
+            cursor: default;
         }
 
         .settore-item:hover {
-            background: #EFF6FF;
-            transform: scale(1.05);
+            background: #EEF2FF;
+            transform: translateY(-3px);
         }
 
-        .settore-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .settore-item .img-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
         }
 
         .settore-item span {
-            font-weight: 600;
-            color: #374151;
+            font-weight: 700;
+            color: #1E40AF;
             font-size: 0.9rem;
         }
 
         /* PREZZO */
         .prezzo {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
             color: white;
             text-align: center;
+            position: relative;
+        }
+
+        .prezzo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='white' d='M0,40 C480,80 960,0 1440,40 L1440,0 L0,0 Z'/%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
         }
 
         .prezzo h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 2rem;
         }
 
         .prezzo-box {
             background: white;
-            color: #1F2937;
+            color: #2D3748;
             padding: 3rem;
-            border-radius: 16px;
-            max-width: 400px;
+            border-radius: 32px;
+            max-width: 450px;
             margin: 0 auto;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
         }
 
         .prezzo-valore {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             color: #1E40AF;
+            line-height: 1;
         }
 
         .prezzo-valore span {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #6B7280;
+            color: #64748B;
         }
 
         .prezzo-box p {
-            margin: 1rem 0;
-            color: #6B7280;
+            margin: 1.2rem 0;
+            color: #64748B;
         }
 
         .prezzo-box .highlight {
-            color: #059669;
-            font-weight: 600;
+            color: #10B981;
+            font-weight: 700;
         }
 
         /* CTA FINALE */
         .cta-finale {
-            padding: 5rem 2rem;
-            background: #F8FAFC;
-            text-align: center;
+            padding: 6rem 2rem;
+            background: #FAFBFC;
+            position: relative;
         }
 
-        .cta-finale h2 {
-            font-size: 2rem;
-            color: #1F2937;
+        .cta-finale::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%233B82F6' d='M0,40 C480,0 960,80 1440,40 L1440,0 L0,0 Z'/%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .cta-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            font-size: 2.2rem;
+            color: #1E40AF;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .cta-text p {
+            color: #64748B;
             margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem;
+        }
+
+        .cta-image .img-placeholder {
+            width: 100%;
+            height: 300px;
         }
 
         /* FOOTER */
         footer {
-            background: #1F2937;
-            color: #9CA3AF;
-            padding: 3rem 2rem;
-            text-align: center;
+            background: #1E293B;
+            color: #94A3B8;
+            padding: 4rem 2rem 2rem;
         }
 
-        footer .logo {
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
             color: white;
             margin-bottom: 1rem;
         }
 
-        footer p {
-            font-size: 0.9rem;
+        .footer-brand p {
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        footer a {
+        .footer-links h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            margin-bottom: 0.7rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #F97316;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
             color: #F97316;
             text-decoration: none;
         }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 {
+        @media (max-width: 968px) {
+            .hero-content,
+            .problema-grid,
+            .cta-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
 
-            .hero .payoff {
-                font-size: 1.2rem;
-            }
-
-            .nav-links {
-                display: none;
+            .hero-text .subtitle {
+                margin: 0 auto 2rem;
             }
 
             .benefici-grid {
                 grid-template-columns: 1fr;
             }
 
+            .beneficio-card {
+                grid-template-columns: 80px 1fr;
+            }
+
             .settori-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
             .prezzo-valore {
-                font-size: 3rem;
+                font-size: 3.5rem;
+            }
+
+            .settori-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
         }
     </style>
@@ -376,96 +578,135 @@
         <nav>
             <div class="logo">ALFED</div>
             <div class="nav-links">
-                <a href="#benefici">Funzionalità</a>
-                <a href="#settori">Settori</a>
-                <a href="#prezzo">Prezzi</a>
-                <a href="https://app.alfedcrm.it/login" class="btn btn-primary">Accedi</a>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="https://app.alfedcrm.it/login" class="btn btn-outline">Accedi</a>
+                <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova gratis</a>
             </div>
         </nav>
     </header>
 
     <!-- HERO -->
     <section class="hero">
-        <h1>ALFED</h1>
-        <p class="payoff">Il gestionale per chi vende online</p>
-        <p class="subtitle">Gestisci lead e venditori da un'unica dashboard.</p>
-        <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova gratis 14 giorni</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>ALFED</h1>
+                <p class="payoff">Il gestionale per chi vende online</p>
+                <p class="subtitle">Gestisci lead e venditori da un'unica dashboard. Finalmente sai dove vanno i tuoi soldi.</p>
+                <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova gratis 14 giorni</a>
+            </div>
+            <div class="hero-image">
+                <div class="img-placeholder">
+                    📸 Foto: Titolare/imprenditore al lavoro, sorridente, ambiente dinamico
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- PROBLEMA -->
     <section class="problema">
         <div class="container">
-            <h2>Sai davvero quanto rendono le tue lead?</h2>
-            <p class="problema-text">
-                Come performano i soldi che investi? La tua squadra fa rendere al massimo i soldi investiti? Hai il controllo di quello che succede nel flusso di vendita?
-            </p>
-            <div class="soluzione">
-                <p><strong>Con ALFED vedi tutto in tempo reale:</strong> quante lead arrivano, chi le lavora, quante si chiudono. Finalmente sai dove vanno i tuoi soldi.</p>
+            <h2 class="section-title">Sai davvero quanto rendono le tue lead?</h2>
+            <p class="section-subtitle">Come performano i soldi che investi? La tua squadra fa rendere al massimo i soldi investiti? Hai il controllo di quello che succede nel flusso di vendita?</p>
+            
+            <div class="problema-grid">
+                <div class="problema-image">
+                    <div class="img-placeholder">
+                        📸 Foto: Persona pensierosa/preoccupata mentre guarda numeri, oppure team in discussione
+                    </div>
+                </div>
+                <div class="problema-text">
+                    <h3>Con ALFED, finalmente chiarezza</h3>
+                    <p>Vedi tutto in tempo reale: quante lead arrivano, chi le lavora, quante si chiudono.</p>
+                    <p class="highlight">Finalmente sai dove vanno i tuoi soldi e chi li fa fruttare.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- BENEFICI -->
     <section class="benefici" id="benefici">
-        <h2>Perché scegliere ALFED</h2>
+        <h2 class="section-title">Perché scegliere ALFED</h2>
+        <p class="section-subtitle">Strumenti semplici per risultati concreti</p>
+        
         <div class="benefici-grid">
             <div class="beneficio-card">
-                <div class="icon">📊</div>
-                <h3>Dashboard in tempo reale</h3>
-                <p>Vedi subito lead, venditori, risultati</p>
+                <div class="img-placeholder">
+                    📸 Dashboard
+                </div>
+                <div>
+                    <h3>Dashboard in tempo reale</h3>
+                    <p>Vedi subito lead, venditori, risultati. Tutto a colpo d'occhio.</p>
+                </div>
             </div>
             <div class="beneficio-card">
-                <div class="icon">👥</div>
-                <h3>Supporta il tuo team</h3>
-                <p>Con un colpo d'occhio sai chi ha bisogno di aiuto e chi no</p>
+                <div class="img-placeholder">
+                    📸 Team
+                </div>
+                <div>
+                    <h3>Supporta il tuo team</h3>
+                    <p>Con un colpo d'occhio sai chi ha bisogno di aiuto e chi no.</p>
+                </div>
             </div>
             <div class="beneficio-card">
-                <div class="icon">📈</div>
-                <h3>Misura il ROI</h3>
-                <p>Capisci se la pubblicità rende</p>
+                <div class="img-placeholder">
+                    📸 Grafici
+                </div>
+                <div>
+                    <h3>Misura il ROI</h3>
+                    <p>Capisci se la pubblicità rende. Investi dove funziona.</p>
+                </div>
             </div>
             <div class="beneficio-card">
-                <div class="icon">⚡</div>
-                <h3>Semplice da usare</h3>
-                <p>Niente formazione, parti subito</p>
+                <div class="img-placeholder">
+                    📸 Semplice
+                </div>
+                <div>
+                    <h3>Semplice da usare</h3>
+                    <p>Niente formazione complicata. Parti subito, oggi stesso.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- SETTORI -->
     <section class="settori" id="settori">
-        <h2>Perfetto per chi usa lead online per vendere</h2>
+        <h2 class="section-title">Perfetto per chi usa lead online per vendere</h2>
+        <p class="section-subtitle">ALFED funziona in tutti i settori dove si vende con trattativa</p>
+        
         <div class="settori-grid">
             <div class="settore-item">
-                <div class="icon">🚗</div>
+                <div class="img-placeholder">📸 Auto</div>
                 <span>Auto e noleggio</span>
             </div>
             <div class="settore-item">
-                <div class="icon">☀️</div>
+                <div class="img-placeholder">📸 Solare</div>
                 <span>Fotovoltaico</span>
             </div>
             <div class="settore-item">
-                <div class="icon">✈️</div>
+                <div class="img-placeholder">📸 Viaggio</div>
                 <span>Viaggi e vacanze</span>
             </div>
             <div class="settore-item">
-                <div class="icon">💰</div>
+                <div class="img-placeholder">📸 Soldi</div>
                 <span>Finanziamenti</span>
             </div>
             <div class="settore-item">
-                <div class="icon">🪟</div>
+                <div class="img-placeholder">📸 Casa</div>
                 <span>Infissi</span>
             </div>
             <div class="settore-item">
-                <div class="icon">🛡️</div>
+                <div class="img-placeholder">📸 Scudo</div>
                 <span>Assicurazioni</span>
             </div>
             <div class="settore-item">
-                <div class="icon">🎓</div>
+                <div class="img-placeholder">📸 Studio</div>
                 <span>Corsi di formazione</span>
             </div>
             <div class="settore-item">
-                <div class="icon">🏠</div>
+                <div class="img-placeholder">📸 Casa</div>
                 <span>Immobiliare</span>
             </div>
         </div>
@@ -477,22 +718,54 @@
         <div class="prezzo-box">
             <div class="prezzo-valore">€7 <span>/ mese per utente</span></div>
             <p>Tutto incluso. Nessun costo nascosto.</p>
-            <p class="highlight">Prova gratis 14 giorni, senza carta di credito.</p>
+            <p class="highlight">✓ Prova gratis 14 giorni, senza carta di credito</p>
             <a href="https://app.alfedcrm.it/register" class="btn btn-secondary">Inizia gratis</a>
         </div>
     </section>
 
     <!-- CTA FINALE -->
     <section class="cta-finale">
-        <h2>Pronto a massimizzare il tuo investimento in lead e a supportare il tuo team di vendita?</h2>
-        <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova ALFED gratis per 14 giorni</a>
+        <div class="cta-content">
+            <div class="cta-text">
+                <h2>Pronto a massimizzare il tuo investimento in lead e supportare il tuo team?</h2>
+                <p>Inizia oggi la prova gratuita. Nessun impegno, nessuna carta di credito richiesta.</p>
+                <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova ALFED gratis per 14 giorni</a>
+            </div>
+            <div class="cta-image">
+                <div class="img-placeholder">
+                    📸 Foto: Persona soddisfatta, stretta di mano, successo
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <div class="logo">ALFED</div>
-        <p>Il gestionale per chi vende online</p>
-        <p style="margin-top: 1rem;">© 2025 ALFED. Tutti i diritti riservati. | <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a></p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">ALFED</div>
+                <p>Il gestionale per chi vende online. Semplice, efficace, conveniente.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Prodotto</h4>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+            </div>
+            <div class="footer-links">
+                <h4>Supporto</h4>
+                <a href="contatti.html">Contatti</a>
+                <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legale</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="termini.html">Termini di servizio</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ALFED. Tutti i diritti riservati. | <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a></p>
+        </div>
     </footer>
 
 </body>
