@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prezzi - ALFED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAFBFC;
+            color: #2D3748;
+            line-height: 1.8;
+        }
+
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1E40AF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover { color: #1E40AF; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #F97316, #FB923C);
+            color: white;
+            box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(249,115,22,0.45);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #1E40AF, #3B82F6);
+            color: white;
+            box-shadow: 0 4px 20px rgba(30,64,175,0.35);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(30,64,175,0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1E40AF;
+            border: 2px solid #1E40AF;
+        }
+
+        .btn-outline:hover {
+            background: #1E40AF;
+            color: white;
+        }
+
+        .btn-large { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
+
+        /* HERO */
+        .hero {
+            padding: 9rem 2rem 5rem;
+            background: linear-gradient(160deg, #EEF2FF 0%, #E0E7FF 40%, #DBEAFE 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23FAFBFC' d='M0,60 C360,100 720,20 1080,60 C1260,80 1380,70 1440,60 L1440,100 L0,100 Z'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1E40AF;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span { color: #F97316; }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #4A5568;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* PREZZO */
+        .prezzo-section {
+            padding: 6rem 2rem;
+            background: #FAFBFC;
+        }
+
+        .prezzo-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .prezzo-box {
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            border: 2px solid #E0E7FF;
+        }
+
+        .prezzo-box .badge {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #F97316, #FB923C);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .prezzo-valore {
+            font-size: 5rem;
+            font-weight: 800;
+            color: #1E40AF;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .prezzo-valore span {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #64748B;
+        }
+
+        .prezzo-desc {
+            color: #64748B;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #F1F5F9;
+            font-size: 0.95rem;
+            color: #4A5568;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li .check {
+            color: #10B981;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .trial-note {
+            color: #10B981;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ESEMPIO CALCOLO */
+        .calcolo-section {
+            padding: 5rem 2rem;
+            background: #EEF2FF;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .calcolo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .calcolo-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .calcolo-card h3 {
+            font-size: 1.1rem;
+            color: #1E40AF;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .calcolo-card .team-size {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #F97316;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .calcolo-card .team-label {
+            font-size: 0.85rem;
+            color: #64748B;
+            margin-bottom: 1rem;
+        }
+
+        .calcolo-card .costo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1E40AF;
+        }
+
+        .calcolo-card .costo-label {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+
+        /* CONFRONTO */
+        .confronto-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .confronto-table {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .confronto-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .confronto-table thead {
+            background: linear-gradient(135deg, #1E40AF, #3B82F6);
+            color: white;
+        }
+
+        .confronto-table thead th {
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .confronto-table thead th:first-child {
+            text-align: left;
+        }
+
+        .confronto-table tbody tr {
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .confronto-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .confronto-table tbody tr:nth-child(even) {
+            background: #F8FAFC;
+        }
+
+        .confronto-table tbody td {
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            color: #4A5568;
+            text-align: center;
+        }
+
+        .confronto-table tbody td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #2D3748;
+        }
+
+        .confronto-table .alfed-col {
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .check-green { color: #10B981; font-size: 1.2rem; }
+        .check-red { color: #EF4444; font-size: 1.2rem; }
+        .check-yellow { color: #F59E0B; font-size: 1.2rem; }
+
+        /* FAQ */
+        .faq-section {
+            padding: 5rem 2rem;
+            background: #FAFBFC;
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #1E40AF;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #64748B;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1E293B;
+            color: #94A3B8;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo { color: white; margin-bottom: 1rem; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: #F97316; }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .calcolo-grid { grid-template-columns: 1fr; max-width: 350px; }
+            .confronto-table { overflow-x: auto; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ALFED</a>
+            <div class="nav-links">
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="https://app.alfedcrm.it/login" class="btn btn-outline">Accedi</a>
+                <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova gratis</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Un prezzo onesto.<br><span>Zero sorprese.</span></h1>
+        <p>Niente piani complicati, niente costi nascosti. Paghi solo per quello che usi.</p>
+    </section>
+
+    <!-- PREZZO -->
+    <section class="prezzo-section">
+        <div class="prezzo-container">
+            <div class="prezzo-box">
+                <div class="badge">🔥 Tutto incluso</div>
+                <div class="prezzo-valore">€7 <span>/ mese</span></div>
+                <p class="prezzo-desc">per utente · fatturazione mensile</p>
+
+                <ul class="features-list">
+                    <li><span class="check">✓</span> Dashboard completa in tempo reale</li>
+                    <li><span class="check">✓</span> Gestione lead illimitata</li>
+                    <li><span class="check">✓</span> Pipeline di vendita personalizzabile</li>
+                    <li><span class="check">✓</span> Distribuzione automatica lead</li>
+                    <li><span class="check">✓</span> Report e statistiche avanzate</li>
+                    <li><span class="check">✓</span> Gestione team multi-ruolo</li>
+                    <li><span class="check">✓</span> Import lead da CSV</li>
+                    <li><span class="check">✓</span> Supporto via email incluso</li>
+                </ul>
+
+                <p class="trial-note">✓ 14 giorni gratis · Nessuna carta richiesta</p>
+                <a href="https://app.alfedcrm.it/register" class="btn btn-secondary btn-large">Inizia gratis ora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCOLO -->
+    <section class="calcolo-section">
+        <h2 class="section-title">Quanto costa per il tuo team?</h2>
+        <p class="section-subtitle">Calcola subito il costo in base alla dimensione del tuo team</p>
+
+        <div class="calcolo-grid">
+            <div class="calcolo-card">
+                <h3>Team piccolo</h3>
+                <div class="team-size">3</div>
+                <div class="team-label">utenti</div>
+                <div class="costo">€21</div>
+                <div class="costo-label">al mese</div>
+            </div>
+            <div class="calcolo-card">
+                <h3>Team medio</h3>
+                <div class="team-size">7</div>
+                <div class="team-label">utenti</div>
+                <div class="costo">€49</div>
+                <div class="costo-label">al mese</div>
+            </div>
+            <div class="calcolo-card">
+                <h3>Team grande</h3>
+                <div class="team-size">15</div>
+                <div class="team-label">utenti</div>
+                <div class="costo">€105</div>
+                <div class="costo-label">al mese</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFRONTO -->
+    <section class="confronto-section">
+        <h2 class="section-title" style="text-align:center;">Confronta con gli altri</h2>
+        <p class="section-subtitle" style="text-align:center; margin: 0 auto 3rem;">Perché pagare di più per lo stesso risultato?</p>
+
+        <div class="confronto-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Funzionalità</th>
+                        <th>ALFED<br><small>€7/utente</small></th>
+                        <th>Pipedrive<br><small>€15+/utente</small></th>
+                        <th>HubSpot<br><small>€45+/utente</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pipeline di vendita</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-green">✓</span></td>
+                        <td><span class="check-green">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dashboard in tempo reale</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-green">✓</span></td>
+                        <td><span class="check-green">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gestione team multi-ruolo</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-yellow">~</span></td>
+                        <td><span class="check-green">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Distribuzione lead automatica</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-red">✗</span></td>
+                        <td><span class="check-yellow">~</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pensato per lead da social</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-red">✗</span></td>
+                        <td><span class="check-red">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td>Setup in 2 minuti</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-red">✗</span></td>
+                        <td><span class="check-red">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td>Supporto in italiano</td>
+                        <td class="alfed-col"><span class="check-green">✓</span></td>
+                        <td><span class="check-yellow">~</span></td>
+                        <td><span class="check-yellow">~</span></td>
+                    </tr>
+                    <tr>
+                        <td>Prezzo per 7 utenti</td>
+                        <td class="alfed-col" style="color:#10B981; font-size:1.1rem;">€49/mese</td>
+                        <td>€105+/mese</td>
+                        <td>€315+/mese</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <h2 class="section-title" style="text-align:center;">Domande frequenti</h2>
+        <p class="section-subtitle" style="text-align:center; margin: 0 auto 3rem;">Tutto quello che devi sapere prima di iniziare</p>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Cosa succede dopo i 14 giorni di prova? <span>+</span></div>
+                <div class="faq-answer">Al termine del periodo di prova ti chiederemo i dati di pagamento per continuare. Se decidi di non continuare, il tuo account verrà disattivato e potrai esportare i tuoi dati.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Posso aggiungere o rimuovere utenti? <span>+</span></div>
+                <div class="faq-answer">Sì, puoi aggiungere e rimuovere utenti in qualsiasi momento. Il costo si aggiorna automaticamente in base al numero di utenti attivi.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Ci sono costi nascosti? <span>+</span></div>
+                <div class="faq-answer">No. €7 per utente al mese, tutto incluso. Nessun costo di setup, nessun modulo aggiuntivo a pagamento.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Posso cancellare quando voglio? <span>+</span></div>
+                <div class="faq-answer">Sì, puoi cancellare l'abbonamento in qualsiasi momento. Non ci sono penali né vincoli.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">I miei dati sono al sicuro? <span>+</span></div>
+                <div class="faq-answer">Sì. I dati sono conservati su server europei, con backup giornalieri e connessioni cifrate SSL. Siamo conformi al GDPR.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Inizia oggi, gratis.</h2>
+        <p>14 giorni per provare tutto. Nessuna carta richiesta.</p>
+        <a href="https://app.alfedcrm.it/register" class="btn btn-white btn-large">Crea il tuo account gratuito →</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">ALFED</div>
+                <p>Il gestionale per chi vende online.<br>Semplice, efficace, conveniente.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Prodotto</h4>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+            </div>
+            <div class="footer-links">
+                <h4>Supporto</h4>
+                <a href="contatti.html">Contatti</a>
+                <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legale</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="termini.html">Termini di servizio</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ALFED. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

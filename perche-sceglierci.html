@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perché sceglierci - ALFED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAFBFC;
+            color: #2D3748;
+            line-height: 1.8;
+        }
+
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1E40AF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover { color: #1E40AF; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #F97316, #FB923C);
+            color: white;
+            box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(249,115,22,0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1E40AF;
+            border: 2px solid #1E40AF;
+        }
+
+        .btn-outline:hover {
+            background: #1E40AF;
+            color: white;
+        }
+
+        .btn-white {
+            background: white;
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-large { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
+
+        /* HERO */
+        .hero {
+            padding: 9rem 2rem 5rem;
+            background: linear-gradient(160deg, #EEF2FF 0%, #E0E7FF 40%, #DBEAFE 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23FAFBFC' d='M0,60 C360,100 720,20 1080,60 C1260,80 1380,70 1440,60 L1440,100 L0,100 Z'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1E40AF;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span { color: #F97316; }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #4A5568;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* SEZIONE VALORI */
+        .valori-section {
+            padding: 6rem 2rem;
+            background: #FAFBFC;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #1E40AF;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .valori-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .valore-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .valore-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .valore-card .numero {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #E0E7FF;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .valore-card h3 {
+            font-size: 1.2rem;
+            color: #1E40AF;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .valore-card p {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        /* SEZIONE DIFFERENZE */
+        .differenze-section {
+            padding: 6rem 2rem;
+            background: #EEF2FF;
+        }
+
+        .differenze-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .differenza-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .differenza-item .icon-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1E40AF, #3B82F6);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .differenza-item h3 {
+            font-size: 1.05rem;
+            color: #1E40AF;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .differenza-item p {
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        /* SEZIONE STORIA */
+        .storia-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .storia-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .storia-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .storia-text h2 span { color: #F97316; }
+
+        .storia-text p {
+            color: #64748B;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .img-placeholder {
+            background: linear-gradient(135deg, #94A3B8 0%, #64748B 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1.5rem;
+            width: 100%;
+            height: 350px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        /* NUMERI */
+        .numeri-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1E40AF, #3B82F6);
+            color: white;
+            text-align: center;
+        }
+
+        .numeri-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .numero-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #FCD34D;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .numero-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* PROMESSA */
+        .promessa-section {
+            padding: 6rem 2rem;
+            background: #FAFBFC;
+            text-align: center;
+        }
+
+        .promessa-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            border-left: 6px solid #F97316;
+        }
+
+        .promessa-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 1.5rem;
+        }
+
+        .promessa-box p {
+            color: #64748B;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .promessa-box .firma {
+            margin-top: 2rem;
+            font-weight: 600;
+            color: #1E40AF;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1E293B;
+            color: #94A3B8;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo { color: white; margin-bottom: 1rem; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: #F97316; }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .valori-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+            .differenze-grid { grid-template-columns: 1fr; }
+            .storia-container { grid-template-columns: 1fr; }
+            .numeri-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .promessa-box { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ALFED</a>
+            <div class="nav-links">
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="https://app.alfedcrm.it/login" class="btn btn-outline">Accedi</a>
+                <a href="https://app.alfedcrm.it/register" class="btn btn-primary">Prova gratis</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Non siamo il CRM<br><span>più grande.</span><br>Siamo quello giusto.</h1>
+        <p>ALFED è stato costruito per un problema specifico: gestire lead online con un team di vendita. Niente di più, niente di meno.</p>
+    </section>
+
+    <!-- VALORI -->
+    <section class="valori-section">
+        <h2 class="section-title">Cosa ci muove ogni giorno</h2>
+        <p class="section-subtitle">Tre principi che guidano ogni decisione che prendiamo</p>
+
+        <div class="valori-grid">
+            <div class="valore-card">
+                <div class="numero">01</div>
+                <h3>Semplicità prima di tutto</h3>
+                <p>Un software che non si usa non serve a niente. ALFED deve funzionare dal primo giorno, senza formazione, senza manuali. Se è complicato, lo semplifichiamo.</p>
+            </div>
+            <div class="valore-card">
+                <div class="numero">02</div>
+                <h3>Prezzo onesto, sempre</h3>
+                <p>€7 per utente al mese. Tutto incluso. Non crediamo nei piani a livelli dove le funzionalità utili sono sempre nel piano più caro.</p>
+            </div>
+            <div class="valore-card">
+                <div class="numero">03</div>
+                <h3>Costruito per chi vende</h3>
+                <p>Non siamo uno strumento generico adattato alla vendita. Siamo nati per gestire lead, pipeline e team di vendita. È tutto quello che sappiamo fare, e lo facciamo bene.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFFERENZE -->
+    <section class="differenze-section">
+        <h2 class="section-title">Cosa ci rende diversi</h2>
+        <p class="section-subtitle">Non tutte le differenze si vedono al primo sguardo</p>
+
+        <div class="differenze-grid">
+            <div class="differenza-item">
+                <div class="icon-box">🎯</div>
+                <div>
+                    <h3>Pensato per le lead da social</h3>
+                    <p>Gli altri CRM sono nati per il B2B enterprise. ALFED è nato per chi compra lead su Facebook, Instagram e Google.</p>
+                </div>
+            </div>
+            <div class="differenza-item">
+                <div class="icon-box">⚡</div>
+                <div>
+                    <h3>Setup in 2 minuti</h3>
+                    <p>Niente consulenti, niente giorni di configurazione. Crei l'account, aggiungi i tuoi venditori e inizi subito.</p>
+                </div>
+            </div>
+            <div class="differenza-item">
+                <div class="icon-box">🇮🇹</div>
+                <div>
+                    <h3>100% italiano</h3>
+                    <p>Interfaccia in italiano, supporto in italiano, fatturazione italiana. Fatto da chi conosce il mercato italiano.</p>
+                </div>
+            </div>
+            <div class="differenza-item">
+                <div class="icon-box">📊</div>
+                <div>
+                    <h3>ROI visibile da subito</h3>
+                    <p>Già dalla prima settimana sai quali lead convertono di più e quali venditori performano meglio.</p>
+                </div>
+            </div>
+            <div class="differenza-item">
+                <div class="icon-box">🔒</div>
+                <div>
+                    <h3>Dati al sicuro in Europa</h3>
+                    <p>Server europei, GDPR compliant, backup giornalieri. I tuoi dati restano tuoi.</p>
+                </div>
+            </div>
+            <div class="differenza-item">
+                <div class="icon-box">💬</div>
+                <div>
+                    <h3>Supporto vero, non bot</h3>
+                    <p>Quando hai un problema, rispondiamo noi. Niente ticket infiniti, niente chatbot inutili.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORIA -->
+    <section class="storia-section">
+        <div class="storia-container">
+            <div class="storia-text">
+                <h2>Perché abbiamo <span>costruito ALFED</span></h2>
+                <p>ALFED nasce da un problema reale: gestire un team di vendita che lavora con lead online è caotico. WhatsApp, fogli Excel, email sparse. Le lead si perdono, i venditori non vengono seguiti, i risultati sono opachi.</p>
+                <p>I CRM esistenti o costano troppo, o sono troppo complicati, o non sono pensati per questo tipo di lavoro. Così abbiamo costruito quello che avremmo voluto avere.</p>
+                <p>Semplice da usare, accessibile per tutti, costruito attorno al flusso reale di chi vende con le lead online.</p>
+            </div>
+            <div class="storia-image">
+                <div class="img-placeholder">
+                    📸 Foto: Persona che lavora, autentica, non in posa. Oppure immagine che trasmette costruzione/artigianalità
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUMERI -->
+    <section class="numeri-section">
+        <div class="numeri-grid">
+            <div class="numero-item">
+                <h3>€7</h3>
+                <p>per utente al mese, tutto incluso</p>
+            </div>
+            <div class="numero-item">
+                <h3>2'</h3>
+                <p>per iniziare a usarlo davvero</p>
+            </div>
+            <div class="numero-item">
+                <h3>14</h3>
+                <p>giorni gratis, senza carta</p>
+            </div>
+            <div class="numero-item">
+                <h3>0</h3>
+                <p>costi nascosti o sorprese</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMESSA -->
+    <section class="promessa-section">
+        <div class="promessa-box">
+            <h2>La nostra promessa</h2>
+            <p>Se dopo 14 giorni di prova ALFED non ti ha aiutato a capire meglio le tue lead e il tuo team, ti chiediamo solo di dircelo. Vogliamo capire cosa non ha funzionato per migliorare.</p>
+            <p>Non promettiamo miracoli. Promettiamo uno strumento onesto, che fa quello che dice, a un prezzo che ha senso.</p>
+            <div class="firma">— Il team di ALFED</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Convinto? Proviamolo insieme.</h2>
+        <p>14 giorni gratis. Nessuna carta richiesta. Setup in 2 minuti.</p>
+        <a href="https://app.alfedcrm.it/register" class="btn btn-white btn-large">Inizia la prova gratuita →</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">ALFED</div>
+                <p>Il gestionale per chi vende online.<br>Semplice, efficace, conveniente.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Prodotto</h4>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+            </div>
+            <div class="footer-links">
+                <h4>Supporto</h4>
+                <a href="contatti.html">Contatti</a>
+                <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legale</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="termini.html">Termini di servizio</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ALFED. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
