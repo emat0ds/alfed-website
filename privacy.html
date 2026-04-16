@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - ALFED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+    function loadAnalytics(){
+      if(document.getElementById('ga-script'))return;
+      var s=document.createElement('script');
+      s.id='ga-script';
+      s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-BKZCW39Q1N';
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag=gtag;
+      gtag('js',new Date());
+      gtag('config','G-BKZCW39Q1N');
+    }
+    if(localStorage.getItem('cookie-consent')==='accepted'){loadAnalytics();}
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAFBFC;
+            color: #2D3748;
+            line-height: 1.8;
+        }
+
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1E40AF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover { color: #1E40AF; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #F97316, #FB923C);
+            color: white;
+            box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(249,115,22,0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1E40AF;
+            border: 2px solid #1E40AF;
+        }
+
+        .btn-outline:hover {
+            background: #1E40AF;
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 9rem 2rem 4rem;
+            background: linear-gradient(160deg, #EEF2FF 0%, #E0E7FF 40%, #DBEAFE 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23FAFBFC' d='M0,60 C360,100 720,20 1080,60 C1260,80 1380,70 1440,60 L1440,100 L0,100 Z'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1E40AF;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #64748B;
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin: 2.5rem 0 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .content h2:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #374151;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .content p {
+            color: #4A5568;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .content ul {
+            margin: 0.5rem 0 1.5rem 1.5rem;
+            color: #4A5568;
+            font-size: 0.95rem;
+        }
+
+        .content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content a {
+            color: #1E40AF;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background: #EEF2FF;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #1E40AF;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #1E40AF;
+            font-weight: 500;
+        }
+
+        .last-update {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1E293B;
+            color: #94A3B8;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo { color: white; margin-bottom: 1rem; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: #F97316; }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 968px) {
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ALFED</a>
+            <div class="nav-links">
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+                <a href="contatti.html">Contatti</a>
+                <a href="https://app.alfedcrm.it/login" class="btn btn-outline">Accedi</a>
+                <a href="https://app.alfedcrm.it/registrazione" class="btn btn-primary">Prova gratis</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Privacy Policy</h1>
+        <p>Come raccogliamo, utilizziamo e proteggiamo i tuoi dati</p>
+    </section>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="last-update">
+            📅 Ultimo aggiornamento: 16 aprile 2025
+        </div>
+
+        <h2>1. Titolare del Trattamento</h2>
+        <div class="info-box">
+            <p><strong>Engorile Skateboarding ASD</strong><br>
+            C.F.: 97372790820<br>
+            P.IVA: 07258500821<br>
+            Email: <a href="mailto:skateboardingengorile@gmail.com">skateboardingengorile@gmail.com</a></p>
+        </div>
+        <p>Il Titolare del Trattamento è responsabile della gestione e della protezione dei dati personali raccolti attraverso il sito web <strong>alfedcrm.it</strong> e la piattaforma <strong>app.alfedcrm.it</strong> (di seguito "Servizio").</p>
+
+        <h2>2. Dati raccolti</h2>
+
+        <h3>2.1 Dati forniti dall'utente</h3>
+        <p>Raccogliamo i dati che l'utente fornisce volontariamente, tra cui:</p>
+        <ul>
+            <li><strong>Registrazione:</strong> nome, cognome, email, nome azienda, password (criptata)</li>
+            <li><strong>Form contatti:</strong> nome, cognome, email, azienda, messaggio</li>
+            <li><strong>Utilizzo del servizio:</strong> dati relativi a lead, venditori, contratti e attività inseriti dall'utente nella piattaforma</li>
+        </ul>
+
+        <h3>2.2 Dati raccolti automaticamente</h3>
+        <p>Attraverso cookie e tecnologie simili, raccogliamo:</p>
+        <ul>
+            <li><strong>Cookie tecnici:</strong> necessari al funzionamento del sito e della sessione utente</li>
+            <li><strong>Cookie analitici (Google Analytics):</strong> dati anonimi sulla navigazione (pagine visitate, durata visita, dispositivo, area geografica) — solo previo consenso dell'utente</li>
+        </ul>
+
+        <h2>3. Finalità del trattamento</h2>
+        <p>I dati personali sono trattati per le seguenti finalità:</p>
+        <ul>
+            <li><strong>Erogazione del servizio:</strong> creazione e gestione dell'account, funzionamento della piattaforma CRM</li>
+            <li><strong>Comunicazioni di servizio:</strong> notifiche tecniche, aggiornamenti, avvisi sulla scadenza del trial</li>
+            <li><strong>Supporto:</strong> risposta alle richieste inviate tramite form contatti o email</li>
+            <li><strong>Analisi e miglioramento:</strong> analisi aggregate e anonime sull'utilizzo del sito per migliorare il servizio</li>
+        </ul>
+
+        <h2>4. Base giuridica del trattamento</h2>
+        <ul>
+            <li><strong>Esecuzione contrattuale</strong> (art. 6.1.b GDPR): per erogare il servizio richiesto dall'utente</li>
+            <li><strong>Consenso</strong> (art. 6.1.a GDPR): per i cookie analitici, revocabile in qualsiasi momento</li>
+            <li><strong>Interesse legittimo</strong> (art. 6.1.f GDPR): per garantire la sicurezza del servizio e prevenire abusi</li>
+        </ul>
+
+        <h2>5. Cookie</h2>
+
+        <h3>5.1 Cookie tecnici (necessari)</h3>
+        <p>Questi cookie sono indispensabili per il funzionamento del sito e della piattaforma. Includono i cookie di sessione per il login. Non richiedono consenso.</p>
+
+        <h3>5.2 Cookie analitici (Google Analytics)</h3>
+        <p>Utilizziamo Google Analytics (Google LLC) per raccogliere dati statistici anonimi sulla navigazione. Questi cookie vengono installati solo dopo il consenso esplicito dell'utente tramite il banner cookie.</p>
+        <p>L'utente può revocare il consenso in qualsiasi momento cancellando i cookie del browser o cliccando "Rifiuta" nel banner al primo accesso.</p>
+        <p>Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a></p>
+
+        <h2>6. Condivisione dei dati</h2>
+        <p>I dati personali <strong>non vengono venduti</strong> a terzi. Possono essere condivisi con:</p>
+        <ul>
+            <li><strong>Google LLC</strong> (Analytics): dati di navigazione anonimi, previo consenso</li>
+            <li><strong>Neon Inc.</strong> (hosting database): i dati della piattaforma sono conservati su server in Europa</li>
+            <li><strong>Railway Corp.</strong> (hosting applicazione): l'applicazione è ospitata su server europei</li>
+            <li><strong>Cloudflare Inc.</strong> (CDN e DNS): per la distribuzione del sito vetrina</li>
+        </ul>
+
+        <h2>7. Conservazione dei dati</h2>
+        <ul>
+            <li><strong>Dati dell'account:</strong> conservati per tutta la durata dell'abbonamento e per 30 giorni dopo la cancellazione</li>
+            <li><strong>Dati del form contatti:</strong> conservati per 12 mesi dalla ricezione</li>
+            <li><strong>Dati analitici:</strong> conservati per 26 mesi (impostazione predefinita di Google Analytics)</li>
+        </ul>
+
+        <h2>8. Diritti dell'utente</h2>
+        <p>In conformità al GDPR (Regolamento UE 2016/679), l'utente ha diritto a:</p>
+        <ul>
+            <li><strong>Accesso:</strong> ottenere conferma e copia dei propri dati personali</li>
+            <li><strong>Rettifica:</strong> correggere dati inesatti o incompleti</li>
+            <li><strong>Cancellazione:</strong> richiedere la cancellazione dei propri dati ("diritto all'oblio")</li>
+            <li><strong>Limitazione:</strong> limitare il trattamento in determinati casi</li>
+            <li><strong>Portabilità:</strong> ricevere i propri dati in formato leggibile e trasferirli</li>
+            <li><strong>Opposizione:</strong> opporsi al trattamento basato sull'interesse legittimo</li>
+            <li><strong>Revoca del consenso:</strong> revocare il consenso ai cookie analitici in qualsiasi momento</li>
+        </ul>
+        <p>Per esercitare questi diritti, contattare: <a href="mailto:skateboardingengorile@gmail.com">skateboardingengorile@gmail.com</a></p>
+
+        <h2>9. Sicurezza</h2>
+        <p>Adottiamo misure tecniche e organizzative per proteggere i dati personali, tra cui:</p>
+        <ul>
+            <li>Connessioni cifrate SSL/TLS</li>
+            <li>Password criptate con algoritmi sicuri (bcrypt)</li>
+            <li>Backup giornalieri del database</li>
+            <li>Accesso limitato ai dati su base need-to-know</li>
+            <li>Hosting su server europei</li>
+        </ul>
+
+        <h2>10. Trasferimento dati extra-UE</h2>
+        <p>Alcuni fornitori (Google, Cloudflare) possono trasferire dati negli Stati Uniti. Tali trasferimenti avvengono in conformità alle clausole contrattuali standard (SCC) approvate dalla Commissione Europea e/o al Data Privacy Framework UE-USA.</p>
+
+        <h2>11. Modifiche alla Privacy Policy</h2>
+        <p>Ci riserviamo di aggiornare questa Privacy Policy. La data dell'ultimo aggiornamento è indicata in alto. In caso di modifiche sostanziali, informeremo gli utenti registrati via email.</p>
+
+        <h2>12. Reclami</h2>
+        <p>Se ritieni che il trattamento dei tuoi dati violi il GDPR, hai diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong>:</p>
+        <ul>
+            <li>Sito web: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a></li>
+            <li>Email: <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a></li>
+        </ul>
+
+        <h2>13. Contatti</h2>
+        <div class="info-box">
+            <p>Per qualsiasi domanda relativa alla privacy e al trattamento dei dati personali:<br><br>
+            <strong>Engorile Skateboarding ASD</strong><br>
+            Email: <a href="mailto:skateboardingengorile@gmail.com">skateboardingengorile@gmail.com</a><br>
+            Email servizio: <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a></p>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">ALFED</div>
+                <p>Il gestionale per chi vende online.<br>Semplice, efficace, conveniente.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Prodotto</h4>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="perche-sceglierci.html">Perché sceglierci</a>
+            </div>
+            <div class="footer-links">
+                <h4>Supporto</h4>
+                <a href="contatti.html">Contatti</a>
+                <a href="mailto:info@alfedcrm.it">info@alfedcrm.it</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legale</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="termini.html">Termini di servizio</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ALFED. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;width:100%;background:#1E293B;color:white;padding:1.2rem 2rem;z-index:9999;font-family:'Poppins',sans-serif;">
+        <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+            <p style="margin:0;font-size:0.9rem;flex:1;min-width:280px;">
+                Questo sito usa cookie tecnici e di analisi per migliorare la tua esperienza.
+                <a href="privacy.html" style="color:#F97316;text-decoration:none;">Privacy Policy</a>
+            </p>
+            <div style="display:flex;gap:0.8rem;">
+                <button onclick="acceptCookies()" style="background:linear-gradient(135deg,#F97316,#FB923C);color:white;border:none;padding:0.6rem 1.5rem;border-radius:50px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.85rem;">Accetta</button>
+                <button onclick="rejectCookies()" style="background:transparent;color:#94A3B8;border:1px solid #94A3B8;padding:0.6rem 1.5rem;border-radius:50px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.85rem;">Rifiuta</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    function acceptCookies(){
+        localStorage.setItem('cookie-consent','accepted');
+        document.getElementById('cookie-banner').style.display='none';
+        loadAnalytics();
+    }
+    function rejectCookies(){
+        localStorage.setItem('cookie-consent','rejected');
+        document.getElementById('cookie-banner').style.display='none';
+    }
+    if(!localStorage.getItem('cookie-consent')){
+        document.getElementById('cookie-banner').style.display='block';
+    }
+    </script>
+
+</body>
+</html>
